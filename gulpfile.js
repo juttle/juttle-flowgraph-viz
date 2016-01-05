@@ -35,3 +35,5 @@ gulp.task('run', ['watch'], function() {
         root: ['examples', 'dist']
     });
 });
+
+gulp.task('build', ['browserify', 'styles']);
