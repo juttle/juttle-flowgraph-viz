@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
 import DevTools from './containers/DevTools';
 import configureStore from './store/configureStore';
 import compiler from 'juttle/lib/compiler';
