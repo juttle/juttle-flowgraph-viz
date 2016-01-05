@@ -1,0 +1,56 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    background-color: #f9f1e6;
+}
+
+.run-button {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.flowgraph {
+    position: relative;
+}
+
+.dvr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.node-points {
+    background-color: #aed9d7;
+    z-index: 1;
+    position: relative;
+    width: 300;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.node-name {
+    width: 300;
+    height: 50;
+    text-align: center;
+    border-width: 2px;
+    border-color: lightgrey;
+    border-style: solid;
+    border-radius: 2px;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f2c396;
+    }
+
+    &.last-point-node {
+        border-color: black;
+    }
+}
