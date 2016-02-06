@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import compiler from 'juttle/lib/compiler';
 import FlowgraphDVR from './containers/flowgraph-dvr';
 import * as Actions from './actions';
+import implicit_views from 'juttle/lib/compiler/flowgraph/implicit_views';
 
 const store = configureStore();
 
@@ -35,18 +36,22 @@ function patchNodeConsume(node) {
     };
 }
 
+const COMPILE_OPTIONS = {
+    fg_processors: [implicit_views()]
+};
+
 function doIt(juttleSrc) {
     store.dispatch(Actions.updateJuttleSource(juttleSrc));
 
-    compiler.compile(juttleSrc, {
-            stage: 'flowgraph'
-        }).then((program) => {
+    compiler
+        .compile(juttleSrc, Object.assign({ stage: 'flowgraph' }, COMPILE_OPTIONS))
+        .then((program) => {
             let flowgraph = program.built_graph;
 
             store.dispatch(Actions.updateProgramState("RUNNING"));
             store.dispatch(Actions.updateFlowgraph(flowgraph));
 
-            return compiler.compile(juttleSrc);
+            return compiler.compile(juttleSrc, COMPILE_OPTIONS);
         }).then((program) => {
 
             program.get_nodes().forEach((node) => {

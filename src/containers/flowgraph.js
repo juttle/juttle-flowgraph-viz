@@ -34,7 +34,8 @@ export default connect(
                     pname: key,
                     pointsIn: state.nodePoints.present[key] ? state.nodePoints.present[key].pointsIn : [],
                     pointsOut: state.nodePoints.present[key] ? state.nodePoints.present[key].pointsOut : [],
-                    source: state.juttleSource.substring(value.location.start.offset, value.location.end.offset)
+                    // location is missing when a sink is implicitly added by juttle
+                    source: value.location ? state.juttleSource.substring(value.location.start.offset, value.location.end.offset) : `${value.type} (unknown code)`
                 }
             }),
             nodes: state.dagLayout.nodes,
