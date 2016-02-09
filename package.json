@@ -24,7 +24,7 @@
     "classnames": "^2.2.1",
     "dagre": "^0.7.4",
     "jquery": "^2.1.4",
-    "juttle": "^0.1.0",
+    "juttle": "juttle/juttle#1a67f61d5075967c27cf9fe436b91741e6defffb",
     "react": "^0.14.3",
     "react-dom": "^0.14.5",
     "react-redux": "^4.0.6",
