@@ -17,7 +17,7 @@ function patchNodeEmit(node) {
     var origEmit = node.emit;
     node.emit = function(points, output_name) {
         points.forEach((point) => {
-            store.dispatch(Actions.nodeEmitPoint(node.pname, point));
+            store.dispatch(Actions.nodeEmitPoint(node.params.pname, point));
         });
 
         origEmit.apply(node, arguments);
@@ -29,7 +29,7 @@ function patchNodeConsume(node) {
     var origConsume = node.consume;
     node.consume = function(points, from) {
         points.forEach((point) => {
-            store.dispatch(Actions.nodeConsumePoint(node.pname, point));
+            store.dispatch(Actions.nodeConsumePoint(node.params.pname, point));
         });
 
         origConsume.apply(node, arguments);
